@@ -33,7 +33,7 @@ public class Filed : MonoBehaviour
     }
     private void Update()
     {
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.A))
             OnInput(Vector2.left);
         if (Input.GetKeyDown(KeyCode.D))
@@ -42,7 +42,7 @@ public class Filed : MonoBehaviour
             OnInput(Vector2.up);
         if (Input.GetKeyDown(KeyCode.S))
             OnInput(Vector2.down);
-#endif
+//#endif
     }
 
     /// <summary>
