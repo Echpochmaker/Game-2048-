@@ -60,8 +60,10 @@
     <Compile Include="Assets\Scripts\CellAnimation.cs" />
     <Compile Include="Assets\Scripts\CellAnimationController.cs" />
     <Compile Include="Assets\Scripts\CollorManegre.cs" />
+    <Compile Include="Assets\Scripts\ExitButton.cs" />
     <Compile Include="Assets\Scripts\Filed.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\Scenes.cs" />
     <Compile Include="Assets\Scripts\SwipeDirection.cs" />
   </ItemGroup>
   <ItemGroup>
