@@ -130,9 +130,5 @@ public class GameController : MonoBehaviour
         BestSavePoints(BestPoints);      
     }
 
-    /// <summary>
-    /// Метод для выхода из игры
-    /// </summary>
-    public void ExitPaling() => Application.Quit(); 
     #endregion
 }
