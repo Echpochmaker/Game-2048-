@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\Filed.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\Scenes.cs" />
+    <Compile Include="Assets\Scripts\SettingsController.cs" />
     <Compile Include="Assets\Scripts\SwipeDirection.cs" />
   </ItemGroup>
   <ItemGroup>
