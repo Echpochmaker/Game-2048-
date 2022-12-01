@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] GameObject winningPanel;
     [SerializeField] GameObject  restartButton;
+    [SerializeField] GameObject menuButton;
     #endregion
 
     #region --Свойства--
@@ -54,7 +55,7 @@ public class GameController : MonoBehaviour
         GameStarted = false;  
         gameResult.text = "You Win!";
         restartButton.SetActive(false);
-        
+        menuButton.SetActive(false);
     }    
 
     /// <summary>
@@ -66,6 +67,7 @@ public class GameController : MonoBehaviour
         GameStarted = false;
         gameResult.text = "You Lose!";
         restartButton.SetActive(false);
+        menuButton.SetActive(false);
     }
 
     /// <summary>
@@ -79,6 +81,7 @@ public class GameController : MonoBehaviour
         SetPoints(0);
         BestSavePoints(BestPoints);
 
+        menuButton.SetActive(true);
         restartButton.SetActive(true);
         gameOverPanel.SetActive(false);
         winningPanel.SetActive(false);
@@ -125,7 +128,8 @@ public class GameController : MonoBehaviour
     {
         GameStarted = true;
         winningPanel.SetActive(false);
-        restartButton.SetActive(true);    
+        restartButton.SetActive(true);
+        menuButton.SetActive(true);
         SetPoints(Points);
         BestSavePoints(BestPoints);      
     }

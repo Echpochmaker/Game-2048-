@@ -5,9 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Scenes : MonoBehaviour
 {
+
     /// <summary>
     /// Метод для переключений между экранами (сценами) игры
     /// </summary>
     /// <param name="sceneNumber">Номер сцены по списку</param>
-    public void NextScene(int sceneNumber) => SceneManager.LoadScene(sceneNumber);    
+    public void NextScene(int sceneNumber) 
+    {
+        SceneManager.LoadScene(sceneNumber);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);  
+    } 
 }
