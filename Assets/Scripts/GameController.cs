@@ -41,10 +41,7 @@ public class GameController : MonoBehaviour
         if(Instance == null)
             Instance = this;
     }
-    private void Start()
-    {
-        StartGame();
-    }
+    private void Start() => StartGame();
     
     /// <summary>
     /// Вызывается при победе 
@@ -62,8 +59,8 @@ public class GameController : MonoBehaviour
     /// Вызывается при проигрыше 
     /// </summary>
     public void Lose()  
-    {
-        gameOverPanel.SetActive(true);
+    {   
+        gameOverPanel.SetActive(true);       
         GameStarted = false;
         gameResult.text = "You Lose!";
         restartButton.SetActive(false);
@@ -133,6 +130,5 @@ public class GameController : MonoBehaviour
         SetPoints(Points);
         BestSavePoints(BestPoints);      
     }
-
     #endregion
 }

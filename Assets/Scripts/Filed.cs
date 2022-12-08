@@ -19,6 +19,7 @@ public class Filed : MonoBehaviour
 
     private Cell[,] field;
     private bool anyCellMoved; //Перемещена ли ячейка 
+    private AudioSource audioSource;
     #endregion
 
     #region --Методы--
@@ -30,19 +31,20 @@ public class Filed : MonoBehaviour
     private void Start()
     {
         SwipeDirection.SwipeEvent += OnInput;
+        audioSource = GetComponent<AudioSource>();
     }
     private void Update()
     {
-//#if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.A))
-            OnInput(Vector2.left);
-        if (Input.GetKeyDown(KeyCode.D))
-            OnInput(Vector2.right);
-        if (Input.GetKeyDown(KeyCode.W))
-            OnInput(Vector2.up);
-        if (Input.GetKeyDown(KeyCode.S))
-            OnInput(Vector2.down);
-//#endif
+        //#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.A))         
+            OnInput(Vector2.left);        
+        if (Input.GetKeyDown(KeyCode.D))        
+            OnInput(Vector2.right);        
+        if (Input.GetKeyDown(KeyCode.W))       
+            OnInput(Vector2.up);        
+        if (Input.GetKeyDown(KeyCode.S))     
+            OnInput(Vector2.down);      
+        //#endif
     }
 
     /// <summary>
@@ -61,6 +63,7 @@ public class Filed : MonoBehaviour
 
         if (anyCellMoved) 
         {
+            audioSource.Play();
             GenerateRandomCell();
             CheecGameResult();
         }

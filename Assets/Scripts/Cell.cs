@@ -98,7 +98,7 @@ public class Cell : MonoBehaviour
     {
         CellAnimationController.Instance.SmoothTransition(this, target, false);
         target.SetValue(target.X, target.Y, Value, false);
-        SetValue(X, Y, 0);
+        SetValue(X, Y, 0);       
     }
 
     /// <summary>
@@ -123,7 +123,7 @@ public class Cell : MonoBehaviour
     /// Окончание анимации
     /// </summary>
     public void CancelAnimation() 
-    {
+    {    
         if (currentAnimation != null)
             currentAnimation.Destroy();
     }
