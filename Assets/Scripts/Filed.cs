@@ -19,7 +19,7 @@ public class Filed : MonoBehaviour
 
     private Cell[,] field;
     private bool anyCellMoved; //Перемещена ли ячейка 
-    private AudioSource audioSource;
+    private static AudioSource audioSource;
     #endregion
 
     #region --Методы--

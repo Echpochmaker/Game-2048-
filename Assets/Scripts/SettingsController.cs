@@ -8,7 +8,7 @@ public class SettingsController : MonoBehaviour
     [SerializeField] GameObject offAudioButton;
 
     /// <summary>
-    /// Кнопка ВКЛ
+    /// Кнопка ВКЛ Audio
     /// </summary>
     public void OnAudio()
     {
@@ -17,7 +17,7 @@ public class SettingsController : MonoBehaviour
     }
 
     /// <summary>
-    /// Кнопка ВКЛ
+    /// Кнопка ВЫКЛ Audio
     /// </summary>
     public void OffAudio()
     {
