@@ -40,8 +40,15 @@ public class GameController : MonoBehaviour
     {
         if(Instance == null)
             Instance = this;
+
+        if (!PlayerPrefs.HasKey("Score"))
+            PlayerPrefs.SetInt("Score", 0);
     }
-    private void Start() => StartGame();
+    private void Start() 
+    {
+        BestPoints = PlayerPrefs.GetInt("Score");
+        StartGame(); 
+    }
     
     /// <summary>
     /// Вызывается при победе 
@@ -77,6 +84,7 @@ public class GameController : MonoBehaviour
 
         SetPoints(0);
         BestSavePoints(BestPoints);
+        PlayerPrefs.SetInt("Score", BestPoints);
 
         menuButton.SetActive(true);
         restartButton.SetActive(true);
@@ -92,10 +100,14 @@ public class GameController : MonoBehaviour
     public void AddPoints(int points) 
     {    
         SetPoints(Points + points);
-        if(BestPoints < Points)
+        if (BestPoints < Points)
+        {
             BestSavePoints(BestPoints + points);
+            PlayerPrefs.SetInt("Score", BestPoints);
+        }
         else
-            BestSavePoints(BestPoints);     
+            BestSavePoints(BestPoints);
+
     }
 
     /// <summary>

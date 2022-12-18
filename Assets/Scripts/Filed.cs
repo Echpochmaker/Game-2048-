@@ -27,6 +27,7 @@ public class Filed : MonoBehaviour
     {
         if(Instance == null)
             Instance = this;
+
     }
     private void Start()
     {
@@ -63,7 +64,11 @@ public class Filed : MonoBehaviour
 
         if (anyCellMoved) 
         {
-            audioSource.Play();
+            if (SettingsController.playAudio == true)         
+                audioSource.Play();         
+            else
+                audioSource.Stop();
+
             GenerateRandomCell();
             CheecGameResult();
         }
