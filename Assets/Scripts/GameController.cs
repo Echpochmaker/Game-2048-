@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Xml.Serialization;
+using UnityEngine.UIElements;
+using System.IO;
+using System.Linq;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameController : MonoBehaviour
 {
@@ -47,7 +52,7 @@ public class GameController : MonoBehaviour
     private void Start() 
     {
         BestPoints = PlayerPrefs.GetInt("Score");
-        StartGame(); 
+        StartGame();
     }
     
     /// <summary>
@@ -142,5 +147,7 @@ public class GameController : MonoBehaviour
         SetPoints(Points);
         BestSavePoints(BestPoints);      
     }
+
+   
     #endregion
 }

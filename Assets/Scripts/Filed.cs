@@ -1,5 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class Filed : MonoBehaviour
@@ -27,7 +30,6 @@ public class Filed : MonoBehaviour
     {
         if(Instance == null)
             Instance = this;
-
     }
     private void Start()
     {
@@ -44,7 +46,7 @@ public class Filed : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))       
             OnInput(Vector2.up);        
         if (Input.GetKeyDown(KeyCode.S))     
-            OnInput(Vector2.down);      
+            OnInput(Vector2.down);
         //#endif
     }
 
@@ -64,7 +66,7 @@ public class Filed : MonoBehaviour
 
         if (anyCellMoved) 
         {
-            if (SettingsController.playAudio == true)         
+            if (SettingsController.playAudio)         
                 audioSource.Play();         
             else
                 audioSource.Stop();
@@ -230,9 +232,10 @@ public class Filed : MonoBehaviour
 
         for (int i = 0; i < InitCellsCount; i++)
             GenerateRandomCell();
-
-        //field[0, 0].SetValue(0, 0, 10);
-        //field[0, 1].SetValue(0, 1, 10);
+        /*
+        field[0, 0].SetValue(0, 0, 10);
+        field[0, 1].SetValue(0, 1, 10);
+        */
     }  
 
     /// <summary>
@@ -267,6 +270,6 @@ public class Filed : MonoBehaviour
         for (int x = 0; x < FieldSize; x++)
             for (int y = 0; y < FieldSize; y++)
                 field[x, y].ResetFlags();
-    }
+    }  
     #endregion
 }

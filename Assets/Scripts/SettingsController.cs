@@ -1,62 +1,53 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SettingsController : MonoBehaviour
 {
-    public static SettingsController instance;  
-    [SerializeField] GameObject onAudioButton;
-    [SerializeField] GameObject offAudioButton;
-    public static bool playAudio = true;
-    private int audioControll = 0 ;
+    public static SettingsController instance; 
+
+    [SerializeField] private Sprite offAudioButtonSprite;
+    [SerializeField] private Sprite onAudioButtonSprite;
+    [SerializeField] private GameObject audioButton;
+    public static bool playAudio;
 
     private void Awake()
     {
-           if(instance == null)
-            instance = this;
+        if(instance == null)
+                instance = this;
 
-
-        if (!PlayerPrefs.HasKey("Audio"))
-            PlayerPrefs.SetInt("Audio", 0);
-
-
+        if (!PlayerPrefs.HasKey("Audio"))    
+                PlayerPrefs.SetInt("Audio", 0);      
     }
 
     private void Start()
     {
-        audioControll = PlayerPrefs.GetInt("Audio");
+        PlayerPrefs.HasKey("Audio");
+        AudioListener.volume = PlayerPrefs.GetInt("Audio");
+        AudioController();
     }
-    /// <summary>
-    /// Кнопка ВКЛ Audio
-    /// </summary>
-    public void OnAudio()
-    {           
-        playAudio = true;
-        offAudioButton.SetActive(false);
-        onAudioButton.SetActive(true);          
-    }
-
-    /// <summary>
-    /// Кнопка ВЫКЛ Audio
-    /// </summary>
-    public void OffAudio()
+    public void AudioController()
     {
-        playAudio = false;
-        onAudioButton.SetActive(false);
-        offAudioButton.SetActive(true);    
-    }
-
-    public void AudioController() 
-    {
-        if (audioControll == 1)
+        switch (AudioListener.volume)
         {
-            OnAudio();
-            PlayerPrefs.SetInt("Audio", 1);
-        }
-        else if (audioControll == 0)
-        { 
-            OffAudio();
-            PlayerPrefs.SetInt("Audio", 0);
+            case 0:
+                {
+                    PlayerPrefs.SetInt("Audio", 0);
+                    playAudio = true;
+                    AudioListener.volume = 1;
+                    audioButton.GetComponent<Image>().sprite = onAudioButtonSprite;                         
+                }
+                break;
+
+            case 1:
+                {
+                    PlayerPrefs.SetInt("Audio", 1);
+                    playAudio = false;
+                    AudioListener.volume = 0;
+                    audioButton.GetComponent<Image>().sprite = offAudioButtonSprite;                     
+                }
+                break;
         }
     }
 }
