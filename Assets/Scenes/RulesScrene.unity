@@ -190,7 +190,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Play
+  m_Text: Back
 --- !u!222 &430009973
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -654,8 +654,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d419b5ae603a7649b52123ab000f636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backButton: {fileID: 0}
-  backGameButton: {fileID: 0}
 --- !u!4 &1262123184
 Transform:
   m_ObjectHideFlags: 0
@@ -839,7 +837,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -5.3, y: 78.30005}
+  m_AnchoredPosition: {x: -5.3, y: 78.30029}
   m_SizeDelta: {x: 717.8616, y: 101.35449}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1550034626
@@ -891,7 +889,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

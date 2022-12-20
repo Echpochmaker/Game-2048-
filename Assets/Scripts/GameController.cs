@@ -1,13 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
-using System.Xml.Serialization;
-using UnityEngine.UIElements;
-using System.IO;
-using System.Linq;
-using UnityEngine.SocialPlatforms.Impl;
+
 
 public class GameController : MonoBehaviour
 {
@@ -18,7 +11,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI savePointsText;
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] GameObject winningPanel;
-    [SerializeField] GameObject  restartButton;
+    [SerializeField] GameObject gameMenuPanel;
+    [SerializeField] GameObject restartButton;
     [SerializeField] GameObject menuButton;
     #endregion
 
@@ -27,7 +21,7 @@ public class GameController : MonoBehaviour
     /// <summary>
     /// Очки
     /// </summary>
-    public static int Points { get; private set; } 
+    public static int Points { get; private set; }
 
     /// <summary>
     /// Лучшие очки
@@ -43,36 +37,37 @@ public class GameController : MonoBehaviour
     #region --Методы--
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
             Instance = this;
 
         if (!PlayerPrefs.HasKey("Score"))
             PlayerPrefs.SetInt("Score", 0);
+
     }
-    private void Start() 
+    private void Start()
     {
         BestPoints = PlayerPrefs.GetInt("Score");
         StartGame();
     }
-    
+
     /// <summary>
     /// Вызывается при победе 
     /// </summary>
-    public void Win() 
-    {        
+    public void Win()
+    {
         winningPanel.SetActive(true);
-        GameStarted = false;  
+        GameStarted = false;
         gameResult.text = "You Win!";
         restartButton.SetActive(false);
         menuButton.SetActive(false);
-    }    
+    }
 
     /// <summary>
     /// Вызывается при проигрыше 
     /// </summary>
-    public void Lose()  
-    {   
-        gameOverPanel.SetActive(true);       
+    public void Lose()
+    {
+        gameOverPanel.SetActive(true);
         GameStarted = false;
         gameResult.text = "You Lose!";
         restartButton.SetActive(false);
@@ -82,7 +77,7 @@ public class GameController : MonoBehaviour
     /// <summary>
     /// Вызывается при запуске игры
     /// </summary>
-    public void StartGame() 
+    public void StartGame()
     {
         GameStarted = true;
         gameResult.text = "";
@@ -95,15 +90,16 @@ public class GameController : MonoBehaviour
         restartButton.SetActive(true);
         gameOverPanel.SetActive(false);
         winningPanel.SetActive(false);
+        gameMenuPanel.SetActive(false);
         Filed.Instance.GenerateFiled();
-    }  
+    }
 
     /// <summary>
     /// Добавление очков к счету
     /// </summary>
     /// <param name="points">Счет</param>
-    public void AddPoints(int points) 
-    {    
+    public void AddPoints(int points)
+    {
         SetPoints(Points + points);
         if (BestPoints < Points)
         {
@@ -119,12 +115,12 @@ public class GameController : MonoBehaviour
     /// Установка текущего счета 
     /// </summary>
     /// <param name="points">Счет</param>
-    public void SetPoints(int points) 
+    public void SetPoints(int points)
     {
-        Points = points;      
+        Points = points;
         pointsText.text = Points.ToString();
     }
-    
+
     /// <summary>
     /// Установка лучшего рекорда в игре 
     /// </summary>
@@ -132,7 +128,7 @@ public class GameController : MonoBehaviour
     public void BestSavePoints(int points)
     {
         BestPoints = points;
-        savePointsText.text = BestPoints.ToString();        
+        savePointsText.text = BestPoints.ToString();
     }
 
     /// <summary>
@@ -145,9 +141,26 @@ public class GameController : MonoBehaviour
         restartButton.SetActive(true);
         menuButton.SetActive(true);
         SetPoints(Points);
-        BestSavePoints(BestPoints);      
+        BestSavePoints(BestPoints);
     }
 
-   
+    /// <summary>
+    /// Скрыть меню игры
+    /// </summary>
+    public void HideMenuPanel() 
+    {
+        GameStarted = true;
+        gameMenuPanel.SetActive(false);        
+    }
+
+    /// <summary>
+    /// Показать меню игры
+    /// </summary>
+    public void ShowMenuPanel() 
+    {
+        GameStarted = false;
+        gameMenuPanel.SetActive(true);       
+    }
+
     #endregion
 }

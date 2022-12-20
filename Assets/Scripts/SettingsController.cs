@@ -18,7 +18,9 @@ public class SettingsController : MonoBehaviour
                 instance = this;
 
         if (!PlayerPrefs.HasKey("Audio"))    
-                PlayerPrefs.SetInt("Audio", 0);      
+                PlayerPrefs.SetInt("Audio", 0);
+
+        
     }
 
     private void Start()

@@ -232,10 +232,10 @@ public class Filed : MonoBehaviour
 
         for (int i = 0; i < InitCellsCount; i++)
             GenerateRandomCell();
-        /*
-        field[0, 0].SetValue(0, 0, 10);
-        field[0, 1].SetValue(0, 1, 10);
-        */
+        
+        //field[0, 0].SetValue(0, 0, 10);
+        //field[0, 1].SetValue(0, 1, 10);
+        
     }  
 
     /// <summary>
